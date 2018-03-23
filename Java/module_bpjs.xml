@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="module_bpjs" default="compile.module.bpjs">
+  <dirname property="module.bpjs.basedir" file="${ant.file.module_bpjs}"/>
+  
+  <property name="module.jdk.home.bpjs" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.bpjs" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.bpjs" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.bpjs" value="-encoding UTF-8 -source 1.8 -target 1.8 ${compiler.args}"/>
+  
+  <property name="bpjs.output.dir" value="${module.bpjs.basedir}/target/classes"/>
+  <property name="bpjs.testoutput.dir" value="${module.bpjs.basedir}/target/test-classes"/>
+  
+  <path id="bpjs.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="bpjs.module.production.classpath">
+    <path refid="${module.jdk.classpath.bpjs}"/>
+    <path refid="library.maven:_com.github.bthink-bgu:bpjs:0.8.6.classpath"/>
+    <path refid="library.maven:_org.mozilla:rhino:1.7.7.2.classpath"/>
+    <path refid="library.maven:_org.apache.commons:commons-lang3:3.6.classpath"/>
+    <path refid="library.maven:_com.airhacks:afterburner.fx:1.6.0.classpath"/>
+    <path refid="library.maven:_org.controlsfx:controlsfx:8.40.12.classpath"/>
+    <path refid="library.maven:_commons-io:commons-io:2.4.classpath"/>
+  </path>
+  
+  <path id="bpjs.runtime.production.module.classpath">
+    <pathelement location="${bpjs.output.dir}"/>
+    <path refid="library.maven:_com.github.bthink-bgu:bpjs:0.8.6.classpath"/>
+    <path refid="library.maven:_org.mozilla:rhino:1.7.7.2.classpath"/>
+    <path refid="library.maven:_org.apache.commons:commons-lang3:3.6.classpath"/>
+    <path refid="library.maven:_com.airhacks:afterburner.fx:1.6.0.classpath"/>
+    <path refid="library.maven:_org.controlsfx:controlsfx:8.40.12.classpath"/>
+    <path refid="library.maven:_commons-io:commons-io:2.4.classpath"/>
+  </path>
+  
+  <path id="bpjs.module.classpath">
+    <path refid="${module.jdk.classpath.bpjs}"/>
+    <pathelement location="${bpjs.output.dir}"/>
+    <path refid="library.maven:_com.github.bthink-bgu:bpjs:0.8.6.classpath"/>
+    <path refid="library.maven:_org.mozilla:rhino:1.7.7.2.classpath"/>
+    <path refid="library.maven:_org.apache.commons:commons-lang3:3.6.classpath"/>
+    <path refid="library.maven:_com.airhacks:afterburner.fx:1.6.0.classpath"/>
+    <path refid="library.maven:_org.controlsfx:controlsfx:8.40.12.classpath"/>
+    <path refid="library.maven:_commons-io:commons-io:2.4.classpath"/>
+  </path>
+  
+  <path id="bpjs.runtime.module.classpath">
+    <pathelement location="${bpjs.testoutput.dir}"/>
+    <pathelement location="${bpjs.output.dir}"/>
+    <path refid="library.maven:_com.github.bthink-bgu:bpjs:0.8.6.classpath"/>
+    <path refid="library.maven:_org.mozilla:rhino:1.7.7.2.classpath"/>
+    <path refid="library.maven:_org.apache.commons:commons-lang3:3.6.classpath"/>
+    <path refid="library.maven:_com.airhacks:afterburner.fx:1.6.0.classpath"/>
+    <path refid="library.maven:_org.controlsfx:controlsfx:8.40.12.classpath"/>
+    <path refid="library.maven:_commons-io:commons-io:2.4.classpath"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.bpjs">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.bpjs">
+    <patternset refid="excluded.from.module.bpjs"/>
+  </patternset>
+  
+  <path id="bpjs.module.sourcepath">
+    <dirset dir="${module.bpjs.basedir}">
+      <include name="src/main/java"/>
+      <include name="src/main/resources"/>
+    </dirset>
+  </path>
+  
+  <path id="bpjs.module.test.sourcepath">
+    <dirset dir="${module.bpjs.basedir}">
+      <include name="src/test/java"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile.module.bpjs" depends="compile.module.bpjs.production,compile.module.bpjs.tests" description="Compile module BPjs"/>
+  
+  <target name="compile.module.bpjs.production" depends="register.custom.compilers" description="Compile module BPjs; production classes">
+    <mkdir dir="${bpjs.output.dir}"/>
+    <javac2 destdir="${bpjs.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.bpjs}/javac">
+      <compilerarg line="${compiler.args.bpjs}"/>
+      <bootclasspath refid="bpjs.module.bootclasspath"/>
+      <classpath refid="bpjs.module.production.classpath"/>
+      <src refid="bpjs.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.bpjs"/>
+    </javac2>
+    
+    <copy todir="${bpjs.output.dir}">
+      <fileset dir="${module.bpjs.basedir}/src/main/java">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+      <fileset dir="${module.bpjs.basedir}/src/main/resources">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="compile.module.bpjs.tests" depends="register.custom.compilers,compile.module.bpjs.production" description="compile module BPjs; test classes" unless="skip.tests">
+    <mkdir dir="${bpjs.testoutput.dir}"/>
+    <javac2 destdir="${bpjs.testoutput.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.bpjs}/javac">
+      <compilerarg line="${compiler.args.bpjs}"/>
+      <bootclasspath refid="bpjs.module.bootclasspath"/>
+      <classpath refid="bpjs.module.classpath"/>
+      <src refid="bpjs.module.test.sourcepath"/>
+      <patternset refid="excluded.from.compilation.bpjs"/>
+    </javac2>
+    
+    <copy todir="${bpjs.testoutput.dir}">
+      <fileset dir="${module.bpjs.basedir}/src/test/java">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="clean.module.bpjs" description="cleanup module">
+    <delete dir="${bpjs.output.dir}"/>
+    <delete dir="${bpjs.testoutput.dir}"/>
+  </target>
+</project>

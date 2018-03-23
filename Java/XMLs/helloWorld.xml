@@ -1,0 +1,82 @@
+<xml xmlns="http://www.w3.org/1999/xhtml">
+  <variables></variables>
+  <block type="Bthread" id="qfaFPiaVp!xg4K`hGA[_" x="-38" y="-13">
+    <value name="NAME">
+      <block type="text" id="xZtSP!k@+YP?pmkr8c;m">
+        <field name="TEXT">hellobt</field>
+      </block>
+    </value>
+    <value name="procedure">
+      <block type="callback" id="x)[C%voOa:a?NBzm!aj;">
+        <statement name="body">
+          <block type="bsync" id=")SBsPcO$ZE[3cy6qi$oW">
+            <value name="reqtype">
+              <block type="json_create_with" id="{;$d|{NqPabLB5n.0HT0">
+                <mutation items="2"></mutation>
+                <value name="ADD0">
+                  <block type="eventwrapper" id="8?$!Xs~TW:#x5V7@w7!#">
+                    <field name="Type">request</field>
+                    <value name="event">
+                      <block type="event" id="p2W1DHo(O5fIAVkC%cv4">
+                        <value name="nameoftheevent">
+                          <block type="text" id="T|h~.[~=E#a/dEOvA3~0">
+                            <field name="TEXT">hello</field>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <value name="ADD1">
+                  <block type="eventwrapper" id="P$p0@1)@v2|Tb/XY:P._">
+                    <field name="Type">block</field>
+                    <value name="event">
+                      <block type="event" id="`XNvv}XE+jdy#4tjlZ5M">
+                        <value name="nameoftheevent">
+                          <block type="text" id="nRbNS/IenIa~3UwN1SvP">
+                            <field name="TEXT">world</field>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+              </block>
+            </value>
+          </block>
+        </statement>
+      </block>
+    </value>
+    <next>
+      <block type="Bthread" id="i#8?^vjkgHxNR=;D1H|X">
+        <value name="NAME">
+          <block type="text" id="[~FFBBnO-jTE{m+|ot%b">
+            <field name="TEXT">worldbt</field>
+          </block>
+        </value>
+        <value name="procedure">
+          <block type="callback" id="#3wN8[9r/uLc,]ob?I8+">
+            <statement name="body">
+              <block type="bsync" id="Xs;d_Ls[?^3-!1@x50r+">
+                <value name="reqtype">
+                  <block type="eventwrapper" id="8D^BzwM/#[Au]E5oO4c$">
+                    <field name="Type">request</field>
+                    <value name="event">
+                      <block type="event" id="3HKzQP^d*-?m}P1=VgWg">
+                        <value name="nameoftheevent">
+                          <block type="text" id="D`/#)r@RA58{~-~_7#Pa">
+                            <field name="TEXT">world</field>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+              </block>
+            </statement>
+          </block>
+        </value>
+      </block>
+    </next>
+  </block>
+</xml>

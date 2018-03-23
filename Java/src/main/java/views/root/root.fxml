@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXTabPane?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<JFXTabPane prefHeight="927.0" prefWidth="1373.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/8.0.141" fx:controller="views.root.RootPresenter" xmlns:fx="http://javafx.com/fxml/1">
+        <tabs>
+
+          <Tab fx:id="javaButton" text="Java">
+            <content>
+              <AnchorPane fx:id="javaPane" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="927200.0">
+               <children>
+                  <JFXTabPane layoutX="266.0" layoutY="184.0" />
+               </children></AnchorPane>
+            </content>
+          </Tab>
+            <Tab fx:id="blocklyButton" text="Blockly">
+                <content>
+                    <AnchorPane fx:id="blocklyPane" minHeight="0.0" minWidth="0.0" prefHeight="849.0" prefWidth="1391.0" />
+                </content>
+            </Tab>
+        </tabs>
+      </JFXTabPane>

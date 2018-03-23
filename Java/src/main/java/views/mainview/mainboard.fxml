@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import org.controlsfx.control.textfield.CustomTextField?>
+<?import org.fxmisc.richtext.CodeArea?>
+
+<AnchorPane fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="910.0" prefWidth="1373.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.mainview.MainboardPresenter">
+    <children>
+        <JFXTextArea id="logfield" fx:id="logfield" focusColor="#a0a0a0" labelFloat="true" layoutX="999.0" layoutY="13.0" prefHeight="647.0" prefWidth="313.0" unFocusColor="#a0a0a0" />
+        <Button id="loadButton" layoutX="1174.0" layoutY="747.0" onAction="#readfiles" prefHeight="82.0" prefWidth="113.0" style="-fx-font: 20;" text="Load BPjs File" textAlignment="CENTER" textFill="#542222" wrapText="true" />
+        <Button fx:id="runButton" layoutX="1036.0" layoutY="747.0" onAction="#runbprogram" prefHeight="82.0" prefWidth="113.0" text="Run" textAlignment="CENTER" textFill="#542222" wrapText="true" />
+       <Button fx:id="requesteventButton" layoutX="859.0" layoutY="814.0" mnemonicParsing="false" onAction="#requestevent" prefHeight="66.0" prefWidth="113.0" text="request event" />
+      <CustomTextField fx:id="eventname" layoutX="53.0" layoutY="802.0" prefHeight="37.0" prefWidth="776.0" promptText="type eventname" />
+      <CustomTextField fx:id="eventdata" layoutX="53.0" layoutY="847.0" prefHeight="37.0" prefWidth="776.0" promptText="type Data-optional" />
+      <CodeArea id="codearea" fx:id="codearea" layoutX="11.0" layoutY="13.0" prefHeight="775.0" prefWidth="974.0" />
+      <Button fx:id="clearConsole" layoutX="999.0" layoutY="660.0" onAction="#clearConsole" prefHeight="82.0" prefWidth="313.0" text="Clear Console" textAlignment="CENTER" textFill="#542222" wrapText="true" />
+    </children>
+</AnchorPane>

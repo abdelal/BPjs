@@ -1,0 +1,336 @@
+<xml xmlns="http://www.w3.org/1999/xhtml">
+  <variables>
+    <variable type="" id="V5|G/k^5r.81iU:D,4]x">CAKE_REQUEST</variable>
+    <variable type="" id="lqxGoNivnSW1wMm$2dOZ">CAKE_READY</variable>
+  </variables>
+  <block type="variables_set" id="doag@{@Mko.g_s-5u[JP" x="-387" y="-337">
+    <field name="VAR" id="V5|G/k^5r.81iU:D,4]x" variabletype="">CAKE_REQUEST</field>
+    <value name="VALUE">
+      <block type="event" id="Ui.]^Txa)3vBVFjFFJ$V">
+        <value name="nameoftheevent">
+          <block type="text" id="Y;FYYqrlQU),`?PI./js">
+            <field name="TEXT">Cake Please</field>
+          </block>
+        </value>
+      </block>
+    </value>
+    <next>
+      <block type="variables_set" id="I|@;#~0VjxxAD]M9A`+Q">
+        <field name="VAR" id="lqxGoNivnSW1wMm$2dOZ" variabletype="">CAKE_READY</field>
+        <value name="VALUE">
+          <block type="event" id="b`1VeTxF})lehfvcS#ka">
+            <value name="nameoftheevent">
+              <block type="text" id="ouQ_D|]{V16u,1.1Fxi6">
+                <field name="TEXT">Cake served</field>
+              </block>
+            </value>
+          </block>
+        </value>
+        <next>
+          <block type="Bthread" id="i#8?^vjkgHxNR=;D1H|X">
+            <value name="NAME">
+              <block type="text" id="[~FFBBnO-jTE{m+|ot%b">
+                <field name="TEXT">Customer</field>
+              </block>
+            </value>
+            <value name="procedure">
+              <block type="callback" id="#3wN8[9r/uLc,]ob?I8+">
+                <statement name="body">
+                  <block type="bsync" id="Xs;d_Ls[?^3-!1@x50r+">
+                    <value name="reqtype">
+                      <block type="eventwrapper" id="8D^BzwM/#[Au]E5oO4c$">
+                        <field name="Type">request</field>
+                        <value name="event">
+                          <block type="variables_get" id="nSgOplFHghYFJC7cw=N;">
+                            <field name="VAR" id="V5|G/k^5r.81iU:D,4]x" variabletype="">CAKE_REQUEST</field>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                    <next>
+                      <block type="bsync" id="`#z)=A8`uAR(/vxkBO6O">
+                        <value name="reqtype">
+                          <block type="eventwrapper" id="!E=K884ZXdxq2$dm=+Q2">
+                            <field name="Type">waitFor</field>
+                            <value name="event">
+                              <block type="variables_get" id="=UeQpPCGeV1Mq!#+7x]U">
+                                <field name="VAR" id="lqxGoNivnSW1wMm$2dOZ" variabletype="">CAKE_READY</field>
+                              </block>
+                            </value>
+                          </block>
+                        </value>
+                      </block>
+                    </next>
+                  </block>
+                </statement>
+              </block>
+            </value>
+            <next>
+              <block type="Bthread" id="n:?xV;Imb,)yeIAG:WV+">
+                <value name="NAME">
+                  <block type="text" id="Ye(?mTQ,axy}],O?4*Wa">
+                    <field name="TEXT">Oven</field>
+                  </block>
+                </value>
+                <value name="procedure">
+                  <block type="callback" id=")BJ(itTBNdhb7F3;S,;2">
+                    <statement name="body">
+                      <block type="bsync" id="j4Ef8![hJ_)R#QioEZ-|">
+                        <value name="reqtype">
+                          <block type="eventwrapper" id="Ge5t(=$LRw~w.`!G-NGE">
+                            <field name="Type">waitFor</field>
+                            <value name="event">
+                              <block type="event" id=";QbGX.q!8*!R4#s4v,*K">
+                                <value name="nameoftheevent">
+                                  <block type="text" id="HKX,FY-~/^QXjpJhiy-O">
+                                    <field name="TEXT">Bake Start</field>
+                                  </block>
+                                </value>
+                              </block>
+                            </value>
+                          </block>
+                        </value>
+                        <next>
+                          <block type="controls_if" id="N8JpgxEI8r(/L.;_#;I}">
+                            <mutation else="1"></mutation>
+                            <value name="IF0">
+                              <block type="randomBool" id="(As/xk%}k2[Yx/ZX+#?e"></block>
+                            </value>
+                            <statement name="DO0">
+                              <block type="bsync" id="h26My+22o%%;p2U/1@=e">
+                                <value name="reqtype">
+                                  <block type="json_create_with" id="`Nk]lOp%a]?.?I;eM7T6">
+                                    <mutation items="2"></mutation>
+                                    <value name="ADD0">
+                                      <block type="eventwrapper" id="y@#oI%l]Rn%SCDjA:^T?">
+                                        <field name="Type">request</field>
+                                        <value name="event">
+                                          <block type="event" id="3A.vVNz#JQ,$}E[@kqey">
+                                            <value name="nameoftheevent">
+                                              <block type="text" id="O1^3(U|JX9[Y:yw[U/Ii">
+                                                <field name="TEXT">Cake Burnt</field>
+                                              </block>
+                                            </value>
+                                          </block>
+                                        </value>
+                                      </block>
+                                    </value>
+                                    <value name="ADD1">
+                                      <block type="eventwrapper" id="48Sdj;i0vvSZO)QB3T5{">
+                                        <field name="Type">block</field>
+                                        <value name="event">
+                                          <block type="event" id="m)0%z#L~8J:9uT,XP*~/">
+                                            <value name="nameoftheevent">
+                                              <block type="text" id="q4vJm7;--tOEM0LX@z|f">
+                                                <field name="TEXT">Bake End</field>
+                                              </block>
+                                            </value>
+                                          </block>
+                                        </value>
+                                      </block>
+                                    </value>
+                                  </block>
+                                </value>
+                              </block>
+                            </statement>
+                            <statement name="ELSE">
+                              <block type="bsync" id="1+73i0rQ$Z|]BH)3ER|?">
+                                <value name="reqtype">
+                                  <block type="json_create_with" id=":O!Uv3pB-Jj+[dcn5!k:">
+                                    <mutation items="2"></mutation>
+                                    <value name="ADD0">
+                                      <block type="eventwrapper" id="w489GNFA/JO0S:/NK=6s">
+                                        <field name="Type">request</field>
+                                        <value name="event">
+                                          <block type="event" id=";a*v5G$cK@.[/QfS8G+5">
+                                            <value name="nameoftheevent">
+                                              <block type="text" id="u@.7QhkA7V5=w0n8X`-B">
+                                                <field name="TEXT">Cake Ready</field>
+                                              </block>
+                                            </value>
+                                          </block>
+                                        </value>
+                                      </block>
+                                    </value>
+                                    <value name="ADD1">
+                                      <block type="eventwrapper" id="k7)oTgh#PciOTImW46Q!">
+                                        <field name="Type">block</field>
+                                        <value name="event">
+                                          <block type="event" id="CtamDP*Cv94e{M~0egA{">
+                                            <value name="nameoftheevent">
+                                              <block type="text" id="ab+zaA%XaGqtHWocWt(O">
+                                                <field name="TEXT">Bake End</field>
+                                              </block>
+                                            </value>
+                                          </block>
+                                        </value>
+                                      </block>
+                                    </value>
+                                  </block>
+                                </value>
+                              </block>
+                            </statement>
+                          </block>
+                        </next>
+                      </block>
+                    </statement>
+                  </block>
+                </value>
+                <next>
+                  <block type="Bthread" id="dxYS-wHYrcxV[AVnjUY=">
+                    <value name="NAME">
+                      <block type="text" id=",@(7u,~8#Yb{M]![yMf2">
+                        <field name="TEXT">Baker</field>
+                      </block>
+                    </value>
+                    <value name="procedure">
+                      <block type="callback" id="K754?gxHIMdEz,OREx4t">
+                        <statement name="body">
+                          <block type="bsync" id="asGA;xK5R]b(4cf6Ku{3">
+                            <value name="reqtype">
+                              <block type="eventwrapper" id=":L3Y7{LI:!#uKdP=CBwZ">
+                                <field name="Type">waitFor</field>
+                                <value name="event">
+                                  <block type="variables_get" id="Yjpw#CJpae2$!C^33@12">
+                                    <field name="VAR" id="V5|G/k^5r.81iU:D,4]x" variabletype="">CAKE_REQUEST</field>
+                                  </block>
+                                </value>
+                              </block>
+                            </value>
+                            <next>
+                              <block type="bsync" id="eysPW8/`S*.4KJ8IvTF[">
+                                <value name="reqtype">
+                                  <block type="eventwrapper" id="=6NWM;PMwT8b6wScM3FE">
+                                    <field name="Type">request</field>
+                                    <value name="event">
+                                      <block type="event" id="Gpdb!Y2sMV?R`c39$FId">
+                                        <value name="nameoftheevent">
+                                          <block type="text" id="nxttRMZST/tJ4*JjiuA2">
+                                            <field name="TEXT">Buy Ingredients</field>
+                                          </block>
+                                        </value>
+                                      </block>
+                                    </value>
+                                  </block>
+                                </value>
+                                <next>
+                                  <block type="bsync" id="MG|.V/b0M|3~#fdtSB$0">
+                                    <value name="reqtype">
+                                      <block type="eventwrapper" id="B:gDHvZhsw@n+:7Sj4fs">
+                                        <field name="Type">request</field>
+                                        <value name="event">
+                                          <block type="event" id="0:B%#CeW_]jZNU#aSRdK">
+                                            <value name="nameoftheevent">
+                                              <block type="text" id="+Y87tHib0h3p@0jH[IOc">
+                                                <field name="TEXT">Mix Ingredients</field>
+                                              </block>
+                                            </value>
+                                          </block>
+                                        </value>
+                                      </block>
+                                    </value>
+                                    <next>
+                                      <block type="bsync" id="z`0{5+3hq9S+y/DmQczr">
+                                        <value name="reqtype">
+                                          <block type="eventwrapper" id="!rzl4wn.-f]F#VTHuO(Y">
+                                            <field name="Type">request</field>
+                                            <value name="event">
+                                              <block type="event" id="%P)_j4-PCLucm;Dxy=S!">
+                                                <value name="nameoftheevent">
+                                                  <block type="text" id="UI,agmznP%N-k4^EbzbO">
+                                                    <field name="TEXT">Bake Start</field>
+                                                  </block>
+                                                </value>
+                                              </block>
+                                            </value>
+                                          </block>
+                                        </value>
+                                        <next>
+                                          <block type="bsync" id="hQDp;q#B=pZ:-h*]r?/D">
+                                            <value name="reqtype">
+                                              <block type="json_create_with" id="$**sW2KL4vs/.6:s5zMl">
+                                                <mutation items="2"></mutation>
+                                                <value name="ADD0">
+                                                  <block type="eventwrapper" id=";Ufaj2*xUd;O97fi+:/w">
+                                                    <field name="Type">waitFor</field>
+                                                    <value name="event">
+                                                      <block type="event" id="On8Vhbq:ZvFe_c!S+gKu">
+                                                        <value name="nameoftheevent">
+                                                          <block type="text" id="X*3yc)OE5QiZrH(ulV?A">
+                                                            <field name="TEXT">Cake Ready</field>
+                                                          </block>
+                                                        </value>
+                                                      </block>
+                                                    </value>
+                                                  </block>
+                                                </value>
+                                                <value name="ADD1">
+                                                  <block type="eventwrapper" id="Y4h2B4B$M:WS{?]#DfW#">
+                                                    <field name="Type">interrupt</field>
+                                                    <value name="event">
+                                                      <block type="event" id="RYM4f|H8Vo%Q{X/QY`3i">
+                                                        <value name="nameoftheevent">
+                                                          <block type="text" id="nHmiQ=5(ZXhNI_cvsfzw">
+                                                            <field name="TEXT">Cake Burnt</field>
+                                                          </block>
+                                                        </value>
+                                                      </block>
+                                                    </value>
+                                                  </block>
+                                                </value>
+                                              </block>
+                                            </value>
+                                            <next>
+                                              <block type="bsync" id="Rh^XTpoA,$o@(ZT#Vt|e">
+                                                <value name="reqtype">
+                                                  <block type="eventwrapper" id="*u+l)@v-7JL!od!8^TV[">
+                                                    <field name="Type">request</field>
+                                                    <value name="event">
+                                                      <block type="event" id="bYbj)d_EfGW%IW,IEOx=">
+                                                        <value name="nameoftheevent">
+                                                          <block type="text" id="cXWD5iYRZmWjtkw`VbHI">
+                                                            <field name="TEXT">Decorate</field>
+                                                          </block>
+                                                        </value>
+                                                      </block>
+                                                    </value>
+                                                  </block>
+                                                </value>
+                                                <next>
+                                                  <block type="bsync" id="oJ/V!MuFH1y98ER*HK.*">
+                                                    <value name="reqtype">
+                                                      <block type="eventwrapper" id="#G@q6TRh*NMRC4xxQ);z">
+                                                        <field name="Type">request</field>
+                                                        <value name="event">
+                                                          <block type="variables_get" id="`b};`@I+aDz9pJSc6,l~">
+                                                            <field name="VAR" id="lqxGoNivnSW1wMm$2dOZ" variabletype="">CAKE_READY</field>
+                                                          </block>
+                                                        </value>
+                                                      </block>
+                                                    </value>
+                                                  </block>
+                                                </next>
+                                              </block>
+                                            </next>
+                                          </block>
+                                        </next>
+                                      </block>
+                                    </next>
+                                  </block>
+                                </next>
+                              </block>
+                            </next>
+                          </block>
+                        </statement>
+                      </block>
+                    </value>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </next>
+  </block>
+</xml>

@@ -1,5 +1,5 @@
 # blocklyBPjs
-> blockly extended to Supprot BPjs
+blockly extended to Supprot BPjs
 
  blocklyBPjs is deployed [here](https://maxget7.000webhostapp.com/)
 

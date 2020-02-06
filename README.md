@@ -1,9 +1,9 @@
-# blockly extended to Supprt BPjs 
+# blocklyBPjs
+> blockly extended to Supprot BPjs
 
-for more information about Bpjs visit 
+ blocklyBPjs is deployed [here](https://maxget7.000webhostapp.com/)
 
-http://bpjs.readthedocs.io/en/latest/
+used in this project:- 
+ * [Blockly](https://developers.google.com/blockly/)
+ * [bpjs](http://bpjs.readthedocs.io/en/latest/)
 
-Blockly :-
-
-https://developers.google.com/blockly/
